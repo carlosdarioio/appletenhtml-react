@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { Home } from "./components/home/Home";
 import { ParImpar } from "./components/ParImpar/ParImpar";
+import { Potencia } from "./components/potencia/Potencia";
 import { Suma } from "./components/suma/Suma";
 import { Bisiesto } from "./components/yearbisiesto/bisiesto";
 
@@ -31,6 +32,9 @@ export default function App() {
             <Bisiesto />
           </Route>
 
+          <Route path="/potencia">
+            <Potencia />
+          </Route>
 
 
 

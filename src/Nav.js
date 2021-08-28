@@ -32,9 +32,9 @@ export const Nav = () => {
                             </Link>
                           </li>         
                           <li className="nav-item">
-                            <Link className="nav-link" to="/suma">
+                            <Link className="nav-link" to="/potencia">
                               <i className="fa fa-plus"></i> 
-                              Potencia x auqi vas
+                              Potencia 
                             </Link>
                           </li>         
                           <li className="nav-item">
