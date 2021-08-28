@@ -14,17 +14,25 @@ export const Suma = () => {
         <Layout>
             <div className="containerNOP">
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 className="h2">Sumando dos inputs</h1>
+                <h1>Sumando dos inputs</h1>
                 {result>0 && (<h2>Resultado: <small>{result}</small></h2>)}
             </div>
             <div className="mb-3">
-                <label className="form-label">Example label</label>
-                <input type="text" name="num1" value={num1} onChange={(event) => { setNum1(Number(event.target.value)) }}
-                className="form-control" placeholder="Example input placeholder"/>
+                <label className="form-label">Primer Numero</label>
+                <input 
+                type="number" 
+                name="num1" 
+                value={num1} 
+                onChange={(event) => { setNum1(Number(event.target.value)) }}
+                className="form-control" 
+                placeholder="Example input placeholder"
+                />
             </div>
             <div className="mb-3">
-                <label for="formGroupExampleInput2" className="form-label">Another label</label>
-                <input type="text" name="num1" value={num2} onChange={(event) => { setNum2(Number(event.target.value)) }}
+                <label for="formGroupExampleInput2" className="form-label">Segundo Numero</label>
+                <input type="number" 
+                name="num1" value={num2} 
+                onChange={(event) => { setNum2(Number(event.target.value)) }}
                 className="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder"/>
             </div>
             <div className="mb-3">                
