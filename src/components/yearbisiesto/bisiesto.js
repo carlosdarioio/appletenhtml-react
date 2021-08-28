@@ -28,9 +28,19 @@ export const Bisiesto = () => {
         <Layout>
             <div className="containerNOP">
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <p className="lead">Calculando Año bisiesto</p>
-                <br/>
-                {result.length>0 && (<h4>Resultado({num1}): <small className="lead">{result}</small></h4>)}
+                
+                <h1>Calculando Año bisiesto</h1>
+                
+                {result.length>0 && 
+                    (
+                        <h4>
+                            Resultado({num1}): 
+                                <small className="lead">
+                                        {result}
+                                </small>
+                        </h4>
+                    )
+                }
             </div>
             <div className="mb-3">
                 <label className="form-label">Ingresar numero</label>
