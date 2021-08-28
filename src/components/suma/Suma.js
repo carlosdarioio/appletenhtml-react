@@ -14,7 +14,7 @@ export const Suma = () => {
         <Layout>
             <div className="containerNOP">
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1>Sumando dos inputs</h1>
+                <h1>Ejemplo de suma Read</h1>
                 {result>0 && (<h2>Resultado: <small>{result}</small></h2>)}
             </div>
             <div className="mb-3">

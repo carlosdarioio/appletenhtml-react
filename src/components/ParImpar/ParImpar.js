@@ -5,25 +5,27 @@ export const ParImpar = () => {
     const [num1, setNum1] = useState(0);    
     const [result, setResult] = useState("");
 
-    const formatter = new Intl.NumberFormat("en-US", 'percent');
-    const ceroPorcent=formatter.format(0);   
-
     const handlePoP=() => {
         
-        if (num1%2===0){
-            
-            setResult('El numero es par ');          
+        //Reto: en vez de if utiliza el ? para devolver el mensaje de manera mas resumida
+        if (num1%2===0){            
+            setResult('par ');          
            }          
            else{
-            setResult('El numero es impar ');
+            setResult('impar ');
             }        
       }
     return (
         <Layout>
             <div className="containerNOP">
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <p className="lead">Caluclando Par o impar</p>
-                {result.length>0 && (<h4>El numero introducido: <small className="lead">{result}</small></h4>)}
+                <h1>Ejemplo calculando par o impar React</h1>                
+                {result.length>0 && (
+                                    <h4>El numero introducido es: 
+                                          <p className="lead">
+                                              {result}
+                                          </p>
+                                    </h4>)}
             </div>
             <div className="mb-3">
                 <label className="form-label">Ingresar Numero</label>
