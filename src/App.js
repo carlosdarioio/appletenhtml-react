@@ -5,6 +5,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { GetPokesFromApi } from "./components/getPokesFromApi/GetPokesFromApi";
+import Test from "./components/getPokesFromApi/test";
+  
 import { Home } from "./components/home/Home";
 import { ParImpar } from "./components/ParImpar/ParImpar";
 import { Potencia } from "./components/potencia/Potencia";
@@ -34,6 +37,14 @@ export default function App() {
 
           <Route path="/potencia">
             <Potencia />
+          </Route>
+
+          <Route path="/test">
+            <Test/>            
+          </Route>
+
+          <Route path="/pokes">            
+            <GetPokesFromApi/>
           </Route>
 
 

@@ -30,7 +30,7 @@ export const ParImpar = () => {
             <div className="mb-3">
                 <label className="form-label">Ingresar Numero</label>
                 <input type="text" name="num1" value={num1} onChange={(event) => { setNum1(Number(event.target.value));setResult('') }}
-                className="form-control" placeholder="Example input placeholder"/>
+                className="form-control" placeholder="Ingresar numero"/>
             </div>            
             <div className="mb-3">                
                 <button className="btn btn-primary"

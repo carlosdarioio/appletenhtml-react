@@ -25,7 +25,7 @@ export const Suma = () => {
                 value={num1} 
                 onChange={(event) => { setNum1(Number(event.target.value)) }}
                 className="form-control" 
-                placeholder="Example input placeholder"
+                placeholder="Ingresar numero"
                 />
             </div>
             <div className="mb-3">

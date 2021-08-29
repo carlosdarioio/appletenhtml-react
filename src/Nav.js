@@ -33,19 +33,19 @@ export const Nav = () => {
                           </li>         
                           <li className="nav-item">
                             <Link className="nav-link" to="/potencia">
-                              <i className="fa fa-plus"></i> 
+                              <i className="fa fa-sun"></i> 
                               Potencia 
                             </Link>
                           </li>         
                           <li className="nav-item">
-                            <Link className="nav-link" to="/suma">
-                              <i className="fa fa-plus"></i> 
-                              Get from api
+                            <Link className="nav-link" to="/pokes">
+                              <i className="fa fa-database"></i> 
+                              Get Pokes from api
                             </Link>
                           </li>         
                           <li className="nav-item">
                             <Link className="nav-link" to="/suma">
-                              <i className="fa fa-plus"></i> 
+                              <i className="fa fa-user"></i> 
                               CRUD Users
                             </Link>
                           </li>         

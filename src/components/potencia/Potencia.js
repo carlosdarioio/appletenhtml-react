@@ -26,7 +26,7 @@ export const Potencia = () => {
                 value={base} 
                 onChange={(event) => { setBase(Number(event.target.value)) }}
                 className="form-control" 
-                placeholder="Example input placeholder"
+                placeholder="Base"
                 />
             </div>
             <div className="mb-3">
