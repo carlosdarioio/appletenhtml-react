@@ -62,7 +62,7 @@ export const GetPokesFromApi = () => {
                   <p>Tienen ventaja contra</p>
                     {
                       
-                      pokemones.damage_relations.double_damage_to && pokemones.damage_relations.double_damage_to.map(rel=>{
+                      pokemones.damage_relations && pokemones.damage_relations.double_damage_to.map(rel=>{
                         return (
                       <div className="col-6">
                         <div className="p-3 border " key={rel.name} style={{alignItems:'center',margin:'20px 60px'}}>
