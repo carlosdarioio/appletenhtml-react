@@ -1,5 +1,10 @@
 import React from 'react'
-
+import { logout } from './firebase/firebase'
+const cerrarSesion=()=>{
+logout();
+alert("Goodbye " + "!");
+window.location.href = "/login";
+}
 export const Header = () => {
     return (
         <div>
@@ -11,7 +16,7 @@ export const Header = () => {
                   
                   <div className="navbar-nav">
                     <div className="nav-item text-nowrap">
-                      <a className="nav-link px-3" href="#">Salir</a>
+                      <a className="nav-link px-3" href="javascript:" onClick={cerrarSesion} >Salir</a>
                     </div>
                   </div>
                 </header>

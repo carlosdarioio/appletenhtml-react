@@ -17,6 +17,7 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Reset from "./components/Reset/Reset";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Articulos from "./components/Articulos/Articulos";
 
 
 
@@ -59,6 +60,10 @@ export default function App() {
           <Route path="/register" component={Register} />
           <Route path="/reset" component={Reset} />
           <Route path="/dashboard" component={Dashboard} />
+
+          <Route path="/articulos">
+              <Articulos/>
+          </Route>
 
           <Route path="/">
             <Home />

@@ -44,9 +44,15 @@ export const Nav = () => {
                             </Link>
                           </li>         
                           <li className="nav-item">
-                            <Link className="nav-link" to="/suma">
+                            <Link className="nav-link" to="/articulos">
                               <i className="fa fa-user"></i> 
-                              CRUD Users
+                              CRUD articulos firebase (requiere login)
+                            </Link>
+                          </li>
+                          <li className="nav-item">
+                            <Link className="nav-link" to="/profile">
+                              <i className="fa fa-user-edit"></i> 
+                              Profil
                             </Link>
                           </li>         
                         </ul>
