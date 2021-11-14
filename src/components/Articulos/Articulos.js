@@ -6,6 +6,10 @@ import { auth, db } from '../../firebase/firebase';
 import { Layout } from '../Layout'
 
 const Articulos = () => {
+  
+    const [modalTitle, setModalTitle] = useState("Nuevo Articulo");
+    const [modalBtn, setModalBtn] = useState("Crear");
+    const [id, setId] = useState(0);
     const [nombre, setNombre] = useState("");
     const [precio, setPrecio] = useState(0);
     const [descripcion, setDescripcion] = useState("");
@@ -17,7 +21,7 @@ const Articulos = () => {
         try {
   
           //const db = firebase.firestore()
-          const data = await db.collection('items').get()
+          const data = await db.collection('items').orderBy('precio').get()
           const arrayData = data.docs.map(doc => ({ id: doc.id, ...doc.data() }))
           console.log(arrayData)
           setItems(arrayData)    
@@ -37,38 +41,129 @@ const Articulos = () => {
     //end get all
 
     const AddItem= async () => {
-        if(nombre==="" || precio===0 || descripcion==="")
-        {
-            alert('Rellenar todo');
-            return    
-        }
-        
-        try {                        
-            const nuevoItem=await db.collection("items").add({              
-                nombre,
-                precio,
-                descripcion,
-            });
+      //alert('AddItem '+id);
+      //return
+      if(nombre==="" || precio===0 || descripcion==="")
+      {
+        Swal.fire(
+          'Ups!',
+          'Rellenar todos los datos!',
+          'error'
+        );
+          return    
+      }
+      
+      try {                        
+          const nuevoItem=await db.collection("items").add({              
+              nombre,
+              precio,
+              descripcion,
+          });
+          
+          
+          //alert('accion AddItem');
+          Swal.fire(
+              'Agregado!',
+              'Articulo Agregado!',
+              'success'
+            );
+            obtenerDatos();   
             
-            
-            //alert('accion AddItem');
-            Swal.fire(
-                'Agregado!',
-                'Articulo Agregado!',
-                'success'
-              );
-              obtenerDatos();   
-              
 
+          setNombre('');
+          setPrecio(0);
+          setDescripcion('');
+          document.querySelector(".btn-secondary").click();
+        } catch (err) {
+          console.error(err);
+          alert(err.message);
+        }
+    }
+
+    
+    const UpdateItem= async () => {
+      //alert('Update Item '+id);
+      //return
+      if(nombre==="" || precio===0 || descripcion==="" || id===0)
+      {
+        Swal.fire(
+          'Ups!',
+          'Rellenar todos los datos!',
+          'error'
+        );
+          return    
+      }
+      
+      try {                        
+          const updateItem=await db.collection("items").doc(id).update({              
+              nombre,
+              precio,
+              descripcion,
+          });
+          
+          Swal.fire(
+              'Actualizado!',
+              'Articulo editado!',
+              'success'
+            );
+            obtenerDatos();   
             setNombre('');
             setPrecio(0);
             setDescripcion('');
             document.querySelector(".btn-secondary").click();
-          } catch (err) {
-            console.error(err);
-            alert(err.message);
-          }
-      }
+        } catch (err) {
+          console.error(err);
+          alert(err.message);
+        }
+    }
+    
+    const NewItem = () => {
+      setId(0);
+      setModalTitle("Crear Articulo");
+      setModalBtn("Crear");
+      setNombre('');
+      setPrecio(0);
+      setDescripcion('');      
+    }
+
+    const EditItem = (datos) => {
+      setId(datos.id);
+      setModalTitle("Editar Articulo");
+      setModalBtn("Editar");
+      setNombre(datos.nombre);
+      setPrecio(datos.precio);
+      setDescripcion(datos.descripcion);      
+    }
+
+    const ConfirmDelete =  (item)=>{
+      Swal.fire({  
+        title: '¿Quieres eliminar el artículo?',  
+        showDenyButton: true,  showCancelButton: true,  
+        confirmButtonText: `Si`,  
+        denyButtonText: `No`,
+      }).then((result) => {          
+          if (result.isConfirmed) {    
+            //************* */
+            try {                        
+                db.collection("items").doc(id).delete();
+                obtenerDatos();   
+                setNombre('');
+                setPrecio(0);
+                setDescripcion('');
+                document.querySelector(".btn-secondary").click();
+            } catch (err) {
+              console.error(err);
+              alert(err.message);
+            }
+            //---*********
+            
+            Swal.fire('Borrado!', '', 'Cerrar')  
+          } else if (result.isDenied) {    
+            Swal.fire('Changes are not saved', '', 'info')  
+         }
+      });
+    }
+
   //firebas eauth required    
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
@@ -102,20 +197,28 @@ const Articulos = () => {
                 
             </div>
             <h4>CRUD articulos {nombre} | {precio} | {descripcion}  </h4>
-            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Crear
+            <button 
+            type="button" 
+            className="btn btn-primary" 
+            data-bs-toggle="modal" 
+            data-bs-target="#exampleModal"            
+            onClick={() => NewItem()}
+            >
+            Crear
             </button>
             <canvas className="my-4 w-10" id="myChart" width="10" height="10"></canvas>
             <table class="table table-striped table-hover">
             <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Descripcion</th>
-    </tr>
-  </thead>
-  <tbody>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
     {
     items.map((item,i) => (
         <tr>
@@ -123,6 +226,23 @@ const Articulos = () => {
         <td>{item.nombre}</td>
         <td>{item.precio}</td>
         <td>{item.descripcion}</td>
+        <td>
+          <b           
+          onClick={() => EditItem(item)}
+          data-bs-toggle="modal" 
+          data-bs-target="#exampleModal"
+          >
+            Editar
+          </b>
+        </td>
+        <td>
+          <b 
+          className="text-danger"
+          onClick={()=>ConfirmDelete(item)}
+          >
+            Borrar
+          </b>
+        </td>
         </tr>
         ))
     }
@@ -139,7 +259,11 @@ const Articulos = () => {
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">New Articulo</h5>
+        <h5 className="modal-title" id="exampleModalLabel">
+          {
+            modalTitle==='Editar Articulo'?modalTitle:'Crear Articulo'
+          }
+         </h5>
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div className="modal-body">
@@ -181,9 +305,11 @@ const Articulos = () => {
       <div className="modal-footer">
         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         <button type="button" className="btn btn-primary"
-        onClick={() => AddItem()}
+        onClick={() => id===0?AddItem():UpdateItem()}
         >
-            Crear
+            {
+              modalBtn==='Editar'?modalBtn:'Crear'
+            }
             </button>
       </div>
     </div>
