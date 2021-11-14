@@ -48,6 +48,10 @@ function Login() {
         <div>
           Don't have an account? <Link to="/register">Register</Link> now.
         </div>
+        
+        <div>
+          <Link to="/">Home</Link>.
+        </div>
       </div>
     </div>
   );

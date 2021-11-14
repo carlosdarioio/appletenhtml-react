@@ -18,6 +18,7 @@ import Register from "./components/Register/Register";
 import Reset from "./components/Reset/Reset";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Articulos from "./components/Articulos/Articulos";
+import FirebaseTest from "./components/firebasetest";
 
 
 
@@ -64,6 +65,12 @@ export default function App() {
           <Route path="/articulos">
               <Articulos/>
           </Route>
+
+          <Route path="/firebasetest">
+              <FirebaseTest/>
+          </Route>
+
+          
 
           <Route path="/">
             <Home />
