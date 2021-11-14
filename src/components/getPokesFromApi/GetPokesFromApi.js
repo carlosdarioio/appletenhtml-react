@@ -30,7 +30,7 @@ export const GetPokesFromApi = () => {
       
     console.log('pendiente');
     fetchPokes()
-
+    console.log(pokemones);
   }
 
 

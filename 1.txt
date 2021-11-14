@@ -1,2 +1,14 @@
 usando
 https://getbootstrap.com/docs/5.1/examples/dashboard/
+
+MEJOR PROBAR FIREBASE 9: 
+https://blog.logrocket.com/user-authentication-firebase-react-apps/
+x aqui vas
+This is the layout for Reset.js:
+
+rayos hay error...
+https://www.google.com/search?q=Attempted+import+error%3A+%27createUserWithEmailAndPassword%27+is+not+exported+from+%27firebase%2Fauth%27.&oq=Attempted+import+error%3A+%27createUserWithEmailAndPassword%27+is+not+exported+from+%27firebase%2Fauth%27.&aqs=chrome..69i57.967j0j7&sourceid=chrome&ie=UTF-8
+
+
+github:
+https://github.com/atharvadeosthale/firebase-auth-article

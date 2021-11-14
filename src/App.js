@@ -5,19 +5,24 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 import { GetPokesFromApi } from "./components/getPokesFromApi/GetPokesFromApi";
-import Test from "./components/getPokesFromApi/test";
-  
+import Test from "./components/getPokesFromApi/test";  
 import { Home } from "./components/home/Home";
 import { ParImpar } from "./components/ParImpar/ParImpar";
 import { Potencia } from "./components/potencia/Potencia";
 import { Suma } from "./components/suma/Suma";
 import { Bisiesto } from "./components/yearbisiesto/bisiesto";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import Reset from "./components/Reset/Reset";
+import Dashboard from "./components/Dashboard/Dashboard";
+
+
 
 export default function App() {
   return (
-    <Router>
-      <div>
+    <Router>      
         
 
         {/* A <Switch> looks through its children <Route>s and
@@ -47,13 +52,19 @@ export default function App() {
             <GetPokesFromApi/>
           </Route>
 
-
+          <Route path="/login">
+              <Login/>
+          </Route>
+          
+          <Route path="/register" component={Register} />
+          <Route path="/reset" component={Reset} />
+          <Route path="/dashboard" component={Dashboard} />
 
           <Route path="/">
             <Home />
           </Route>
         </Switch>
-      </div>
+      
     </Router>
   );
 }
