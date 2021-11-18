@@ -24,7 +24,7 @@ import FirebaseTest from "./components/firebasetest";
 
 export default function App() {
   return (
-    <Router>      
+    <Router>      {/*basename='/appletenhtml-react-public'*/}
         
 
         {/* A <Switch> looks through its children <Route>s and
