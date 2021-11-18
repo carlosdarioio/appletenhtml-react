@@ -66,6 +66,10 @@ export default function App() {
               <Articulos/>
           </Route>
 
+          <Route path="/perfil">
+              <Articulos/>
+          </Route>
+
           <Route path="/firebasetest">
               <FirebaseTest/>
           </Route>

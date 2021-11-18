@@ -18,8 +18,8 @@
     "react-scripts": "4.0.3",
     "sweetalert2": "^11.1.10",
     "web-vitals": "^1.1.2"
-  },
-  "homepage":"http://localhost:99/appletenhtml-react-public/",
+  },  
+  "homepage":"http://143.198.53.31:99/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
